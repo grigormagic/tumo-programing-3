@@ -148,7 +148,7 @@ function game() {
       grigorArr[i].eat();
     }
   }
-  //! Object to send
+
   let sendData = {
     matrix: matrix,
     grassCounter: grassArr.length,
@@ -164,7 +164,6 @@ function game() {
 
 setInterval(game, 1000);
 
-//// Add event
 function kill() {
   grassArr = [];
   grassEaterArr = [];
@@ -179,20 +178,21 @@ function kill() {
   }
 }
 function addgrass() {
-  for (let i = 0; i < 1; i++) {
+
     let x = Math.floor(Math.random() * 25);
     let y = Math.floor(Math.random() * 25);
     matrix[y][x] = 1;
-    var newGrass = new Grass(x, y, 1);
-    for (let y = 0; y < matrix.length; y++) {
-      for (let x = 0; x < matrix[y].length; x++) {
-        if (matrix[y][x] == 0) {
-          grassArr.push(newGrass);
-        }
-      }
-    }
+      let grass = new Grass(x, y,1);
+      grassArr.push(grass);
+    // for (let y = 0; y < matrix.length; y++) {
+    //   for (let x = 0; x < matrix[y].length; x++) {
+    //     if (matrix[y][x] == 0) {
+          // grassArr.push(newGrass);
+    //     }
+    //   }
+    // }
   }
-}
+
 
 function stop() {
   grassArr.length = 0;
@@ -205,20 +205,7 @@ function stop() {
 function run() {
   creatingObjects();
 }
-// function foo() {
-//     for (var i = 0; i < matrix.length; i++) {
-//         for (var j = 0; j < matrix[i].length; j++) {
-//             let num1 = txt1.value;
-//             let num2 = txt2.value;
-//             if (i == num1 && j == num2) {
-//                 matrix[i][j] = 7;
-//             }
-//         }
-//     }
 
-// }
-
-// btn1.addEventListener("click", foo)
 function kaycak() {
   let j = Math.floor(Math.random() * 25);
   let i = Math.floor(Math.random() * 25);
@@ -248,7 +235,7 @@ io.on("connection", function (socket) {
   socket.on("kaycak", kaycak);
   socket.on("paytun", paytun);
 });
-////   Create static Json
+
 var statistics = {};
 
 setInterval(function () {

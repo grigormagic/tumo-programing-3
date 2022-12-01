@@ -1,5 +1,5 @@
 var socket = io();
-//! Setup function fires automatically
+
 function setup() {
   var weath = "winter";
   var side = 30;
@@ -63,8 +63,38 @@ function setup() {
         }
       }
     }
+
   }
+
+let kacy = [];
+  let btn1 = document.getElementById("btn1")
+  function foo() {
+    let txt1 = document.getElementById("y_cordinat")
+    let txt2 = document.getElementById("x_cordinat")
+    let num1 = txt1.value;
+    let num2 = txt2.value;
+    for (let i = 0; i < matrix.length; i++) {
+      for (let j = 0; j < matrix[i].length; j++) {
+        console.log(num1, num2);
+        if (i == num1 && j == num2) {
+          console.log("asdf");
+          matrix[i][j] = 7;
+          if (matrix[i][j] == 7) {
+            fill("black");
+            rect(j * side, i * side, side, side);
+            console.log("aasdfdsf");
+            kacy.push(num1,num2)
+            console.log(kacy);
+          }
+        }
+      }
+    }
+  }
+  btn1.addEventListener("click", foo)
+
 }
+
+
 
 function kill() {
   socket.emit("kill");
@@ -84,3 +114,5 @@ function kaycak() {
 function paytun() {
   socket.emit("paytun");
 }
+// let asdf = document.getElementById("y_cordinat")
+// socket.emit(asdf)
